@@ -38,11 +38,20 @@ const impact = (item) => {
   const TotalAvailableBedspace = Math.floor(item.totalHospitalBeds * 0.35);
   const hospitalBedsByRequestedTime = TotalAvailableBedspace - severeCasesByRequestedTime;
 
+  // Challenges Three
+  const casesForICUByRequestedTime = Math.floor(infectionsByRequestedTime * 0.05);
+  const casesForVentilatorsByRequestedTime = Math.floor(infectionsByRequestedTime * 0.02);
+  const dollarsIn = item.region.avgDailyIncomePopulation * item.region.avgDailyIncomeInUSD;
+  const dollarsInFlight = infectionsByRequestedTime * timeInDays * dollarsIn;
+
   const value = {
     currentlyInfected,
     infectionsByRequestedTime,
     severeCasesByRequestedTime,
-    hospitalBedsByRequestedTime
+    hospitalBedsByRequestedTime,
+    casesForICUByRequestedTime,
+    casesForVentilatorsByRequestedTime,
+    dollarsInFlight
   };
 
   return value;
@@ -59,11 +68,20 @@ const SevereImpact = (item) => {
   const TotalAvailableBedspace = Math.floor(item.totalHospitalBeds * 0.35);
   const hospitalBedsByRequestedTime = TotalAvailableBedspace - severeCasesByRequestedTime;
 
+  // Challenges Three
+  const casesForICUByRequestedTime = Math.floor(infectionsByRequestedTime * 0.05);
+  const casesForVentilatorsByRequestedTime = Math.floor(infectionsByRequestedTime * 0.02);
+  const dollarsIn = item.region.avgDailyIncomePopulation * item.region.avgDailyIncomeInUSD;
+  const dollarsInFlight = infectionsByRequestedTime * timeInDays * dollarsIn;
+
   const value = {
     currentlyInfected,
     infectionsByRequestedTime,
     severeCasesByRequestedTime,
-    hospitalBedsByRequestedTime
+    hospitalBedsByRequestedTime,
+    casesForICUByRequestedTime,
+    casesForVentilatorsByRequestedTime,
+    dollarsInFlight
   };
 
   return value;
