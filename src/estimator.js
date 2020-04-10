@@ -46,8 +46,9 @@ const impact = (item) => {
   // Challenges Three
   const casesForICUByRequestedTime = Math.floor(infectionsByRequestedTime * 0.05);
   const casesForVentilatorsByRequestedTime = Math.floor(infectionsByRequestedTime * 0.02);
-  const dollarsIn = item.region.avgDailyIncomePopulation * item.region.avgDailyIncomeInUSD;
-  const dollarsInFlight = Math.trunc(infectionsByRequestedTime * timeInDays * dollarsIn);
+  const populate = item.region.avgDailyIncomePopulation;
+  const income = item.region.avgDailyIncomeInUSD;
+  const dollarsInFlight = Math.trunc(infectionsByRequestedTime * timeInDays * populate * income);
 
   const value = {
     currentlyInfected,
@@ -78,12 +79,12 @@ const SevereImpact = (item) => {
     hospitalBedsByRequestedTime = Math.ceil(hospitalBedsByRequestedTime);
   }
 
-
   // Challenges Three
   const casesForICUByRequestedTime = Math.floor(infectionsByRequestedTime * 0.05);
   const casesForVentilatorsByRequestedTime = Math.floor(infectionsByRequestedTime * 0.02);
-  const dollarsIn = item.region.avgDailyIncomePopulation * item.region.avgDailyIncomeInUSD;
-  const dollarsInFlight = Math.trunc(infectionsByRequestedTime * timeInDays * dollarsIn);
+  const populate = item.region.avgDailyIncomePopulation;
+  const income = item.region.avgDailyIncomeInUSD;
+  const dollarsInFlight = Math.trunc(infectionsByRequestedTime * timeInDays * populate * income);
 
   const value = {
     currentlyInfected,
