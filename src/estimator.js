@@ -12,20 +12,6 @@
   totalHospitalBeds: 1380614
 }; */
 
-const normalizePeriod = (period, timeToElapse) => {
-  switch (period) {
-    case 'days':
-      return timeToElapse;
-    case 'weeks':
-      return (7 * timeToElapse);
-    case 'months':
-      return (30 * timeToElapse);
-    default:
-      break;
-  }
-
-  return null;
-};
 
 const impact = (item) => {
   if (item.periodType === 'weeks') {
