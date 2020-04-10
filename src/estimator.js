@@ -34,9 +34,10 @@ const impact = (item) => {
   const infectionsByRequestedTime = currentlyInfected * (2 ** Math.floor(timeInDays / 3));
 
   // Challenges Two
-  const severeCasesByRequestedTime = Math.floor(infectionsByRequestedTime * 0.15);
-  const TotalAvailableBedspace = Math.floor(item.totalHospitalBeds * 0.35);
-  const hospitalBedsByRequestedTime = TotalAvailableBedspace - severeCasesByRequestedTime + 1;
+  const severeCasesByRequestedTime = infectionsByRequestedTime * 0.15;
+  const TotalAvailableBedspace = item.totalHospitalBeds * 0.35;
+  const ss = Math.floor(TotalAvailableBedspace - severeCasesByRequestedTime);
+  const hospitalBedsByRequestedTime = ss;
 
   // Challenges Three
   const casesForICUByRequestedTime = Math.floor(infectionsByRequestedTime * 0.05);
@@ -64,9 +65,10 @@ const SevereImpact = (item) => {
   const infectionsByRequestedTime = currentlyInfected * (2 ** Math.floor(timeInDays / 3));
 
   // Challenges Two
-  const severeCasesByRequestedTime = Math.floor(infectionsByRequestedTime * 0.15);
-  const TotalAvailableBedspace = Math.floor(item.totalHospitalBeds * 0.35);
-  const hospitalBedsByRequestedTime = TotalAvailableBedspace - severeCasesByRequestedTime + 1;
+  const severeCasesByRequestedTime = infectionsByRequestedTime * 0.15;
+  const TotalAvailableBedspace = item.totalHospitalBeds * 0.35;
+  const ss = Math.floor(TotalAvailableBedspace - severeCasesByRequestedTime);
+  const hospitalBedsByRequestedTime = ss;
 
   // Challenges Three
   const casesForICUByRequestedTime = Math.floor(infectionsByRequestedTime * 0.05);
