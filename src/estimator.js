@@ -28,10 +28,18 @@ const normalizePeriod = (period, timeToElapse) => {
 };
 
 const impact = (item) => {
+  if (item.periodType === 'weeks') {
+    item.timeToElapse *= 7;
+  } else if (item.periodType === 'months') {
+    item.timeToElapse *= 30;
+  }
+  const days = item.timeToElapse;
+  // common factor
+  const factor = Math.floor(days / 3);
+
   // Challenges One
   const currentlyInfected = item.reportedCases * 10;
-  const timeInDays = normalizePeriod(item.periodType, item.timeToElapse);
-  const infectionsByRequestedTime = currentlyInfected * (2 ** Math.floor(timeInDays / 3));
+  const infectionsByRequestedTime = currentlyInfected * (2 ** factor);
 
   // Challenges Two
   const severeCasesByRequestedTime = infectionsByRequestedTime * 0.15;
@@ -44,12 +52,6 @@ const impact = (item) => {
   }
 
   // Challenges Three
-  if (item.periodType === 'weeks') {
-    item.timeToElapse *= 7;
-  } else if (item.periodType === 'months') {
-    item.timeToElapse *= 30;
-  }
-  const days = item.timeToElapse;
   const casesForICUByRequestedTime = Math.floor(infectionsByRequestedTime * 0.05);
   const casesForVentilatorsByRequestedTime = Math.floor(infectionsByRequestedTime * 0.02);
   const populate = item.region.avgDailyIncomePopulation;
@@ -70,10 +72,18 @@ const impact = (item) => {
 };
 
 const SevereImpact = (item) => {
+  if (item.periodType === 'weeks') {
+    item.timeToElapse *= 7;
+  } else if (item.periodType === 'months') {
+    item.timeToElapse *= 30;
+  }
+  const days = item.timeToElapse;
+  // common factor
+  const factor = Math.floor(days / 3);
+
   // Challenges One
   const currentlyInfected = item.reportedCases * 50;
-  const timeInDays = normalizePeriod(item.periodType, item.timeToElapse);
-  const infectionsByRequestedTime = currentlyInfected * (2 ** Math.floor(timeInDays / 3));
+  const infectionsByRequestedTime = currentlyInfected * (2 ** factor);
 
   // Challenges Two
   const severeCasesByRequestedTime = infectionsByRequestedTime * 0.15;
@@ -86,12 +96,6 @@ const SevereImpact = (item) => {
   }
 
   // Challenges Three
-  if (item.periodType === 'weeks') {
-    item.timeToElapse *= 7;
-  } else if (item.periodType === 'months') {
-    item.timeToElapse *= 30;
-  }
-  const days = item.timeToElapse;
   const casesForICUByRequestedTime = Math.floor(infectionsByRequestedTime * 0.05);
   const casesForVentilatorsByRequestedTime = Math.floor(infectionsByRequestedTime * 0.02);
   const populate = item.region.avgDailyIncomePopulation;
