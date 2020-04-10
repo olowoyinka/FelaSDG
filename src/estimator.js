@@ -28,13 +28,6 @@ const normalizePeriod = (period, timeToElapse) => {
 };
 
 const impact = (item) => {
-  if (item.periodType === 'weeks') {
-    item.timeToElapse *= 7;
-  } else if (item.periodType === 'months') {
-    item.timeToElapse *= 30;
-  }
-  const days = item.timeToElapse;
-
   // Challenges One
   const currentlyInfected = item.reportedCases * 10;
   const timeInDays = normalizePeriod(item.periodType, item.timeToElapse);
@@ -51,6 +44,12 @@ const impact = (item) => {
   }
 
   // Challenges Three
+  if (item.periodType === 'weeks') {
+    item.timeToElapse *= 7;
+  } else if (item.periodType === 'months') {
+    item.timeToElapse *= 30;
+  }
+  const days = item.timeToElapse;
   const casesForICUByRequestedTime = Math.floor(infectionsByRequestedTime * 0.05);
   const casesForVentilatorsByRequestedTime = Math.floor(infectionsByRequestedTime * 0.02);
   const populate = item.region.avgDailyIncomePopulation;
@@ -71,13 +70,6 @@ const impact = (item) => {
 };
 
 const SevereImpact = (item) => {
-  if (item.periodType === 'weeks') {
-    item.timeToElapse *= 7;
-  } else if (item.periodType === 'months') {
-    item.timeToElapse *= 30;
-  }
-  const days = item.timeToElapse;
-
   // Challenges One
   const currentlyInfected = item.reportedCases * 50;
   const timeInDays = normalizePeriod(item.periodType, item.timeToElapse);
@@ -94,6 +86,12 @@ const SevereImpact = (item) => {
   }
 
   // Challenges Three
+  if (item.periodType === 'weeks') {
+    item.timeToElapse *= 7;
+  } else if (item.periodType === 'months') {
+    item.timeToElapse *= 30;
+  }
+  const days = item.timeToElapse;
   const casesForICUByRequestedTime = Math.floor(infectionsByRequestedTime * 0.05);
   const casesForVentilatorsByRequestedTime = Math.floor(infectionsByRequestedTime * 0.02);
   const populate = item.region.avgDailyIncomePopulation;
