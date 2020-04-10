@@ -67,8 +67,13 @@ const SevereImpact = (item) => {
   // Challenges Two
   const severeCasesByRequestedTime = infectionsByRequestedTime * 0.15;
   const TotalAvailableBedspace = item.totalHospitalBeds * 0.35;
-  const ss = Math.floor(TotalAvailableBedspace - severeCasesByRequestedTime);
-  const hospitalBedsByRequestedTime = ss;
+  let hospitalBedsByRequestedTime = TotalAvailableBedspace - severeCasesByRequestedTime;
+  if (hospitalBedsByRequestedTime > 0) {
+    hospitalBedsByRequestedTime = Math.floor(hospitalBedsByRequestedTime);
+  } else {
+    hospitalBedsByRequestedTime = Math.ceil(hospitalBedsByRequestedTime);
+  }
+
 
   // Challenges Three
   const casesForICUByRequestedTime = Math.floor(infectionsByRequestedTime * 0.05);
