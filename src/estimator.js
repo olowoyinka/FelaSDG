@@ -48,7 +48,8 @@ const impact = (item) => {
   const casesForVentilatorsByRequestedTime = Math.floor(infectionsByRequestedTime * 0.02);
   const populate = item.region.avgDailyIncomePopulation;
   const income = item.region.avgDailyIncomeInUSD;
-  const dollarsInFlight = Math.trunc(infectionsByRequestedTime * timeInDays * populate * income);
+  const calculate = infectionsByRequestedTime * populate * income;
+  const dollarsInFlight = Math.trunc(calculate / timeInDays);
 
   const value = {
     currentlyInfected,
@@ -84,7 +85,8 @@ const SevereImpact = (item) => {
   const casesForVentilatorsByRequestedTime = Math.floor(infectionsByRequestedTime * 0.02);
   const populate = item.region.avgDailyIncomePopulation;
   const income = item.region.avgDailyIncomeInUSD;
-  const dollarsInFlight = Math.trunc(infectionsByRequestedTime * timeInDays * populate * income);
+  const calculate = infectionsByRequestedTime * populate * income;
+  const dollarsInFlight = Math.trunc(calculate / timeInDays);
 
   const value = {
     currentlyInfected,
