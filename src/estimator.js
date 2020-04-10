@@ -28,6 +28,13 @@ const normalizePeriod = (period, timeToElapse) => {
 };
 
 const impact = (item) => {
+  if (item.periodType === 'weeks') {
+    item.timeToElapse *= 7;
+  } else if (item.periodType === 'months') {
+    item.timeToElapse *= 30;
+  }
+  const days = item.timeToElapse;
+
   // Challenges One
   const currentlyInfected = item.reportedCases * 10;
   const timeInDays = normalizePeriod(item.periodType, item.timeToElapse);
@@ -48,7 +55,7 @@ const impact = (item) => {
   const casesForVentilatorsByRequestedTime = Math.floor(infectionsByRequestedTime * 0.02);
   const populate = item.region.avgDailyIncomePopulation;
   const income = item.region.avgDailyIncomeInUSD;
-  const dollarsInFlight = Math.trunc(infectionsByRequestedTime * timeInDays * populate * income);
+  const dollarsInFlight = Math.trunc(infectionsByRequestedTime * days * populate * income);
 
   const value = {
     currentlyInfected,
@@ -64,6 +71,13 @@ const impact = (item) => {
 };
 
 const SevereImpact = (item) => {
+  if (item.periodType === 'weeks') {
+    item.timeToElapse *= 7;
+  } else if (item.periodType === 'months') {
+    item.timeToElapse *= 30;
+  }
+  const days = item.timeToElapse;
+
   // Challenges One
   const currentlyInfected = item.reportedCases * 50;
   const timeInDays = normalizePeriod(item.periodType, item.timeToElapse);
@@ -84,7 +98,7 @@ const SevereImpact = (item) => {
   const casesForVentilatorsByRequestedTime = Math.floor(infectionsByRequestedTime * 0.02);
   const populate = item.region.avgDailyIncomePopulation;
   const income = item.region.avgDailyIncomeInUSD;
-  const dollarsInFlight = Math.trunc(infectionsByRequestedTime * timeInDays * populate * income);
+  const dollarsInFlight = Math.trunc(infectionsByRequestedTime * days * populate * income);
 
   const value = {
     currentlyInfected,
